@@ -1,0 +1,35 @@
+<html>
+<head>
+
+	<meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+	<script>
+        var urls = [
+            "1-1-suricatos.html",
+            "burndown_fca.html",
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1379225155&single=true",
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=2126274174&single=true",
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1417231095&single=true"
+        ];
+        var i = 0;
+        function redirect_url () {
+            var frameElement = document.getElementById("frame");
+            frameElement.src = urls[i];
+            frameElement.contentWindow.location.href = frameElement.src;
+            setTimeout(function(){
+                i = (i+1) % urls.length;
+                redirect_url();
+            }, 30 * 1000);
+        }
+    </script>
+
+</head>
+
+    <body onload="redirect_url()">
+
+        <iframe id="frame" frameborder="0" style="height:100%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px" height="100%" width="100%"></iframe>
+
+    </body>
+</html>

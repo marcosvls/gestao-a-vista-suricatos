@@ -1,35 +1,149 @@
+<!DOCTYPE html>
 <html>
-<head>
 
-	<meta http-equiv="Cache-Control" content="no-cache">
+<head>
+    <style>
+        * {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            outline: 0;
+            box-sizing: border-box;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-	<script>
+    <script>
         var urls = [
-            "1-1-suricatos.html",
-            "burndown_fca.html",
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1379225155&single=true",
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=2126274174&single=true",
-            "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1417231095&single=true"
+            {
+                titulo: '1-1 Suricatos',
+                tribo: 'suricatos',
+                url: "1-1-suricatos.html"
+            },
+            {
+                titulo: 'Burndown FCA',
+                tribo: 'suricatos',
+                url: "burndown_fca.html"
+            },
+            {
+                titulo: 'Javalis',
+                tribo: 'javalis',
+                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1379225155&single=true"
+            },
+            {
+                titulo: 'Javalis',
+                tribo: 'javalis',
+                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=2126274174&single=true"
+            },
+            {
+                titulo: 'Javalis',
+                tribo: 'javalis',
+                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1417231095&single=true"
+            }
         ];
         var i = 0;
-        function redirect_url () {
+        function redirect_url() {
+            
+            var tituloFrame = document.getElementById("titulo-frame");
+            tituloFrame.innerText = urls[i].titulo;
+            
             var frameElement = document.getElementById("frame");
-            frameElement.src = urls[i];
+            frameElement.src = urls[i].url;
             frameElement.contentWindow.location.href = frameElement.src;
-            setTimeout(function(){
-                i = (i+1) % urls.length;
+
+            if (urls[i].tribo === 'suricatos') {
+                console.log('eh um suricato');
+            }
+            else {
+                console.log('nao eh um suricato');
+            }
+
+            setTimeout(function () {
+                i = (i + 1) % urls.length;
                 redirect_url();
             }, 30 * 1000);
         }
     </script>
-
 </head>
 
-    <body onload="redirect_url()">
+<style>
+    .bg {
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
 
-        <iframe id="frame" frameborder="0" style="height:100%;width:100%;position:absolute;top:0px;left:0px;right:0px;bottom:0px" height="100%" width="100%"></iframe>
+    .menu {
+        width: 20%;
+        height: 100%;
+        background-color: #FF9F0D;
+    }
 
-    </body>
+    .suricatobg {
+        display: flex;
+        position: relative;
+        margin: 200px auto auto 24px;
+    }
+
+    .dtiplusfca {
+        display: flex;
+        margin: auto 41px 32px 40px;
+    }
+
+    .content {
+        width: 80%;
+        height: 100%;
+        background: linear-gradient(136deg, #FFA212 0%, #FF9801 40%, #F83D00 100%);
+        display: table;
+    }
+
+    .title-content {
+        display: inline-flex;
+        margin: 56px auto 56px 104px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+
+    }
+
+    .blank-content {
+        width: 81.4%;
+        height: 73.3%;
+        margin: auto;
+        display: flex;
+        background-color: #ffffff;
+    }
+
+    .center {
+        width: 85%;
+        height: 85%;
+        margin: auto;
+        display: flex;
+
+    }
+</style>
+
+<body onload="redirect_url()">
+
+    <div class="bg">
+        <div class="menu">
+            <img class="suricatobg" src="suricato_bg.svg" alt="suticato_bg" />
+            <img class="dtiplusfca" src="dtiplusfca.svg" alt="dtiplusfca" />
+        </div>
+        <div class="content">
+            <div class="title-content" id="titulo-frame">[Título]</div>
+            <div class="blank-content">
+                <iframe id="frame" frameborder="0" style="height:100%;width:100%;top:0px;left:0px;right:0px;bottom:0px"
+                    height="100%" width="100%"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
