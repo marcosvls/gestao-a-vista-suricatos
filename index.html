@@ -32,19 +32,19 @@
                 url: "burndown_fca.html"
             },
             {
-                titulo: 'Javalis',
+                titulo: 'Ritos Javalis',
                 tribo: 'javalis',
-                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1379225155&single=true"
+                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1379225155&single=true&chrome=false"
             },
             {
-                titulo: 'Javalis',
+                titulo: 'Ritos Javalis - Localiza',
                 tribo: 'javalis',
-                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=2126274174&single=true"
+                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=2126274174&single=true&chrome=false"
             },
             {
-                titulo: 'Javalis',
+                titulo: 'Ritos Javalis - VLi',
                 tribo: 'javalis',
-                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1417231095&single=true"
+                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1417231095&single=true&chrome=false"
             }
         ];
         var i = 0;
@@ -79,31 +79,8 @@
         display: flex;
     }
 
-    .menu {
-        width: 20%;
-        height: 100%;
-        background-color: #FF9F0D;
-        display: flex;
-        align-items: center;
-    }
-
-    .suricatobg {
-        display: flex;
-        margin: 200px auto auto 24px;
-    }
-
-    .dtiplusfca {
-        width: fit-content;
-        height: fit-content;
-        display: flex;
-        bottom: 0;
-        position: absolute;
-        margin-left: 16px;
-        margin-bottom: 24px;
-    }
-
     .content {
-        width: 80%;
+        width: 100%;
         height: 100%;
         background: linear-gradient(136deg, #FFA212 0%, #FF9801 40%, #F83D00 100%);
         display: table;
@@ -111,7 +88,7 @@
 
     .title-content {
         display: inline-flex;
-        margin: 40px auto 24px 104px;
+        margin: 24px auto 24px 68px;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-size: 40px;
         font-weight: bold;
@@ -139,14 +116,10 @@
 <body onload="redirect_url()">
 
     <div class="bg">
-        <div class="menu">
-            <img class="suricatobg" src="suricato_bg.svg" alt="suticato_bg" />
-            <img class="dtiplusfca" src="dtiplusfca.svg" alt="dtiplusfca" />
-        </div>
         <div class="content">
             <div class="title-content" id="titulo-frame">[Título]</div>
             <div class="blank-content">
-                <iframe id="frame" frameborder="0" style="height:100%;width:100%;top:12px;left:12px;right:12px;bottom:12px"
+                <iframe id="frame" frameborder="0" style="height:100%;width:100%;top:0px;left:0px;right:0px;bottom:0px"
                     height="100%" width="100%"></iframe>
             </div>
         </div>
