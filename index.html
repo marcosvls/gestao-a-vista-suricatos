@@ -32,14 +32,14 @@
                 titulo: 'Ritos Javalis - Localiza',
                 tribo: 'javalis',
                 url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=2126274174&single=true&chrome=false",
-                show: false
+                show: true
             },
             {
                 id: 'ritos',
                 titulo: 'Ritos Javalis - VLi',
                 tribo: 'javalis',
                 url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1417231095&single=true&chrome=false",
-                show: false
+                show: true
             },
             {
                 id: 'oneone',
@@ -120,20 +120,31 @@
             }
         ];
         var i = 0;
+        var currentTribo = "";
         function redirect_url() {            
             // urlsShow = urls.filter(element => element.show);
             console.log(urls);
-                if (urls[i].tribo === 'javalis') {
-                    var headerSection = document.getElementById("header-suricatos");
-                    headerSection.classList.remove("active");
-                    var headerSection = document.getElementById("header-javalis");
-                    headerSection.classList.add("active");
-                }
-                else {
-                    var headerSection = document.getElementById("header-suricatos");
-                    headerSection.classList.add("active");
-                    var headerSection = document.getElementById("header-javalis");
-                    headerSection.classList.remove("active");
+                if (urls[i].tribo !== currentTribo) {
+                    currentTribo = urls[i].tribo;
+                    if (currentTribo === "javalis") {
+                        var headerSection = document.getElementById("header-suricatos");                        
+                        headerSection.classList.remove("fadeinRight");
+                        headerSection.classList.add("fadeoutLeft");
+                        headerSection.classList.remove("active");
+                        var headerSection = document.getElementById("header-javalis");                     
+                        headerSection.classList.remove("fadeoutRight");
+                        headerSection.classList.add("fadeinLeft");  
+                        headerSection.classList.add("active");    
+                    } else {
+                        var headerSection = document.getElementById("header-suricatos");                       
+                        headerSection.classList.remove("fadeoutLeft");
+                        headerSection.classList.add("fadeinRight");
+                        headerSection.classList.add("active");
+                        var headerSection = document.getElementById("header-javalis");                        
+                        headerSection.classList.remove("fadeinLeft");
+                        headerSection.classList.add("fadeoutRight");
+                        headerSection.classList.remove("active"); 
+                    }
                 }
 
                 var footers = document.getElementsByClassName("footer-section");
@@ -141,15 +152,15 @@
                     footer.classList.remove("active");
                 }
 
-                var footers = document.getElementsByClassName("fadein");
+                var footers = document.getElementsByClassName("footer-section fadeinRight");
                 for(footer of footers) {
-                    footer.classList.remove("fadein");
-                    footer.classList.add("fadeout");
+                    footer.classList.remove("fadeinRight");
+                    footer.classList.add("fadeoutRight");
                 }
 
                 var footerSection = document.getElementById("footer-"+urls[i].id);     
                     console.log(footerSection);  
-                    footerSection.classList.add("fadein");
+                    footerSection.classList.add("fadeinRight");
                     footerSection.classList.add("active");
                 if(urls[i].show) {
                     var frameElement = document.getElementById("frame");
@@ -229,31 +240,54 @@
         background-color: #f8cfaf;
     }
 
-    .fadeout {
-        animation-name: fadeout;
+    .fadeoutRight {
+        animation-name: fadeoutRight;
         animation-duration: 0.5s;
     }
-    .fadein {
-        animation-name: fadein;
+    .fadeinRight {
+        animation-name: fadeinRight;
         animation-duration: 0.5s;
     }
+
+    .fadeoutLeft {
+        animation-name: fadeoutLeft;
+        animation-duration: 0.5s;
+    }
+    .fadeinLeft {
+        animation-name: fadeinLeft;
+        animation-duration: 0.5s;
+    }
+
     .inactive{
      background-color: #f8cfaf;
     }
     .active{
         background-color: #f16300;
     }
-    @keyframes fadeout {
+    @keyframes fadeoutRight {
         0%   {background: linear-gradient(to right,  #f16300 0%,#f16300 50%,#f16300 100%);}
         25%  {background: linear-gradient(to right,  #f8cfaf 0%,#f16300 50%,#f16300 100%);}
         50%  {background: linear-gradient(to right,  #f8cfaf 0%,#f8cfaf 50%,#f16300 100%);}
         100% {background: linear-gradient(to right,  #f8cfaf 0%,#f8cfaf 50%,#f8cfaf 100%);}
     }
-    @keyframes fadein {
+    @keyframes fadeinRight {
         0%   {background: linear-gradient(to right,  #f8cfaf 0%,#f8cfaf 50%,#f8cfaf 100%);}
         25%  {background: linear-gradient(to right,  #f16300 0%,#f8cfaf 50%,#f8cfaf 100%);}
         50%  {background: linear-gradient(to right,  #f16300 0%,#f16300 50%,#f8cfaf 100%);}
         100% {background: linear-gradient(to right,  #f16300 0%,#f16300 50%,#f16300 100%);}
+    }
+
+    @keyframes fadeoutLeft {
+        0%   {background: linear-gradient(to left,  #f16300 0%,#f16300 50%,#f16300 100%);}
+        25%  {background: linear-gradient(to left,  #f8cfaf 0%,#f16300 50%,#f16300 100%);}
+        50%  {background: linear-gradient(to left,  #f8cfaf 0%,#f8cfaf 50%,#f16300 100%);}
+        100% {background: linear-gradient(to left,  #f8cfaf 0%,#f8cfaf 50%,#f8cfaf 100%);}
+    }
+    @keyframes fadeinLeft {
+        0%   {background: linear-gradient(to left,  #f8cfaf 0%,#f8cfaf 50%,#f8cfaf 100%);}
+        25%  {background: linear-gradient(to left,  #f16300 0%,#f8cfaf 50%,#f8cfaf 100%);}
+        50%  {background: linear-gradient(to left,  #f16300 0%,#f16300 50%,#f8cfaf 100%);}
+        100% {background: linear-gradient(to left,  #f16300 0%,#f16300 50%,#f16300 100%);}
     }
 
     .blank-content {
