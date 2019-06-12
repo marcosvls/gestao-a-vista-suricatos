@@ -24,8 +24,8 @@
                 id: 'ritos',
                 titulo: 'Ritos Javalis',
                 tribo: 'javalis',
-                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1379225155&single=true&chrome=false",
-                show: false
+                url: "subpages/ritos-javalis.html",
+                show: true
             },
             {
                 id: 'ritos',
@@ -80,7 +80,7 @@
                 id: 'ritos',
                 titulo: 'Ritos Suricatos',
                 tribo: 'suricatos',
-                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1379225155&single=true&chrome=false",
+                url: "",
                 show: false
             },
             {
@@ -94,7 +94,7 @@
                 id: 'okrs',
                 titulo: 'OKRs Suricatos',
                 tribo: 'suricatos',
-                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1379225155&single=true&chrome=false",
+                url: "",
                 show: false
             },
             {
@@ -121,9 +121,9 @@
         ];
         var i = 0;
         function redirect_url() {            
-            urlsShow = urls.filter(element => element.show);
-            console.log(urlsShow);
-                if (urlsShow[i].tribo === 'javalis') {
+            // urlsShow = urls.filter(element => element.show);
+            console.log(urls);
+                if (urls[i].tribo === 'javalis') {
                     var headerSection = document.getElementById("header-suricatos");
                     headerSection.classList.remove("active");
                     var headerSection = document.getElementById("header-javalis");
@@ -141,18 +141,32 @@
                     footer.classList.remove("active");
                 }
 
-                var footerSection = document.getElementById("footer-"+urlsShow[i].id);     
+                var footers = document.getElementsByClassName("fadein");
+                for(footer of footers) {
+                    footer.classList.remove("fadein");
+                    footer.classList.add("fadeout");
+                }
+
+                var footerSection = document.getElementById("footer-"+urls[i].id);     
                     console.log(footerSection);  
+                    footerSection.classList.add("fadein");
                     footerSection.classList.add("active");
+                if(urls[i].show) {
+                    var frameElement = document.getElementById("frame");
+                    frameElement.src = urls[i].url;
+                    frameElement.contentWindow.location.href = frameElement.src;
 
-                var frameElement = document.getElementById("frame");
-                frameElement.src = urlsShow[i].url;
-                frameElement.contentWindow.location.href = frameElement.src;
-
-                setTimeout(function () {
-                    i = (i + 1) % urlsShow.length;
-                    redirect_url();
-                }, 30 * 1000);
+                    setTimeout(function () {
+                        i = (i + 1) % urls.length;
+                        redirect_url();
+                    }, 30 * 100);
+                } else {
+                    setTimeout(function () {
+                        i = (i + 1) % urls.length;
+                        redirect_url();
+                    }, 30 * 10);
+                }
+                
             
         }
     </script>
@@ -210,13 +224,36 @@
     }
 
     .footer-section {
-        width: 16.66%;
+        width: 16.6667%;
         display: flex;
         background-color: #f8cfaf;
     }
 
-    .active {
+    .fadeout {
+        animation-name: fadeout;
+        animation-duration: 0.5s;
+    }
+    .fadein {
+        animation-name: fadein;
+        animation-duration: 0.5s;
+    }
+    .inactive{
+     background-color: #f8cfaf;
+    }
+    .active{
         background-color: #f16300;
+    }
+    @keyframes fadeout {
+        0%   {background: linear-gradient(to right,  #f16300 0%,#f16300 50%,#f16300 100%);}
+        25%  {background: linear-gradient(to right,  #f8cfaf 0%,#f16300 50%,#f16300 100%);}
+        50%  {background: linear-gradient(to right,  #f8cfaf 0%,#f8cfaf 50%,#f16300 100%);}
+        100% {background: linear-gradient(to right,  #f8cfaf 0%,#f8cfaf 50%,#f8cfaf 100%);}
+    }
+    @keyframes fadein {
+        0%   {background: linear-gradient(to right,  #f8cfaf 0%,#f8cfaf 50%,#f8cfaf 100%);}
+        25%  {background: linear-gradient(to right,  #f16300 0%,#f8cfaf 50%,#f8cfaf 100%);}
+        50%  {background: linear-gradient(to right,  #f16300 0%,#f16300 50%,#f8cfaf 100%);}
+        100% {background: linear-gradient(to right,  #f16300 0%,#f16300 50%,#f16300 100%);}
     }
 
     .blank-content {
