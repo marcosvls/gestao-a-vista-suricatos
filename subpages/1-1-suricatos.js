@@ -35,7 +35,7 @@ function makeGraph(data) {
     const target = data[i + 1]["gs$cell"]["$t"].toLowerCase();
     const date = data[i + 2]["gs$cell"]["$t"].toLowerCase();
 
-    const dir = 'fotos-suricatos/'
+    const dir = '../fotos-suricatos/'
     
     let s = nodes.firstOrDefault(source);
     if (!s)
