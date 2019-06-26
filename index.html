@@ -18,56 +18,167 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-
     <script>
         var urls = [
-            {
-                titulo: '1-1 Suricatos',
-                tribo: 'suricatos',
-                url: "1-1-suricatos.html"
-            },
-            {
-                titulo: 'Burndown FCA',
-                tribo: 'suricatos',
-                url: "burndown_fca.html"
-            },
-            {
+        {
+                id: 'ritos',
                 titulo: 'Ritos Javalis',
                 tribo: 'javalis',
-                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1379225155&single=true&chrome=false"
+                url: "subpages/ritos-javalis.html",
+                show: true
             },
             {
+                id: 'ritos',
                 titulo: 'Ritos Javalis - Localiza',
                 tribo: 'javalis',
-                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=2126274174&single=true&chrome=false"
+                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=2126274174&single=true&chrome=false",
+                show: true
             },
             {
+                id: 'ritos',
                 titulo: 'Ritos Javalis - VLi',
                 tribo: 'javalis',
-                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1417231095&single=true&chrome=false"
+                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1417231095&single=true&chrome=false",
+                show: true
+            },
+            {
+                id: 'oneone',
+                titulo: '1-1 Javalis',
+                tribo: 'javalis',
+                url: "",
+                show: false
+            },
+            {
+                id: 'okrs',
+                titulo: 'OKRs Javalis',
+                tribo: 'javalis',
+                url: "",
+                show: false
+            },
+            {
+                id: 'burndown',
+                titulo: 'Burndown Javalis',
+                tribo: 'javalis',
+                url: "",
+                show: false
+            },
+            {
+                id: 'eventos',
+                titulo: 'Eventos Javalis',
+                tribo: 'javalis',
+                url: "subpages/eventos-javalis.html",
+                show: true
+            },
+            {
+                id: 'aniversarios',
+                titulo: 'Aniversários Javalis',
+                tribo: 'javalis',
+                url: "subpages/aniversarios-javalis.html",
+                show: true
+            },
+            {
+                id: 'ritos',
+                titulo: 'Ritos Suricatos',
+                tribo: 'suricatos',
+                url: "",
+                show: false
+            },
+            {
+                id: 'oneone',
+                titulo: '1-1 Suricatos',
+                tribo: 'suricatos',
+                url: "subpages/1-1-suricatos.html",
+                show: true
+            },
+            {
+                id: 'okrs',
+                titulo: 'OKRs Suricatos',
+                tribo: 'suricatos',
+                url: "",
+                show: false
+            },
+            {
+                id: 'burndown',
+                titulo: 'Burndown Suricatos',
+                tribo: 'suricatos',
+                url: "subpages/burndown_fca.html",
+                show: true
+            },
+            {
+                id: 'eventos',
+                titulo: 'Eventos Suricatos',
+                tribo: 'suricatos',
+                url: "subpages/eventos-suricatos.html",
+                show: true
+            },
+            {
+                id: 'aniversarios',
+                titulo: 'Aniversários Suricatos',
+                tribo: 'suricatos',
+                url: "subpages/aniversarios-suricatos.html",
+                show: true
             }
         ];
         var i = 0;
-        function redirect_url() {
-            
-            var tituloFrame = document.getElementById("titulo-frame");
-            tituloFrame.innerText = urls[i].titulo;
-            
-            var frameElement = document.getElementById("frame");
-            frameElement.src = urls[i].url;
-            frameElement.contentWindow.location.href = frameElement.src;
+        var currentTribo = "";
+        function redirect_url() {            
+            // urlsShow = urls.filter(element => element.show);
+            console.log(urls);
+                if (urls[i].tribo !== currentTribo) {
+                    currentTribo = urls[i].tribo;
+                    if (currentTribo === "javalis") {
+                        var headerSection = document.getElementById("header-suricatos");                        
+                        headerSection.classList.remove("fadeinRight");
+                        headerSection.classList.add("fadeoutLeft");
+                        headerSection.classList.remove("active");
+                        var headerSection = document.getElementById("header-javalis");                     
+                        headerSection.classList.remove("fadeoutRight");
+                        headerSection.classList.add("fadeinLeft");  
+                        headerSection.classList.add("active");    
+                    } else {
+                        var headerSection = document.getElementById("header-suricatos");                       
+                        headerSection.classList.remove("fadeoutLeft");
+                        headerSection.classList.add("fadeinRight");
+                        headerSection.classList.add("active");
+                        var headerSection = document.getElementById("header-javalis");                        
+                        headerSection.classList.remove("fadeinLeft");
+                        headerSection.classList.add("fadeoutRight");
+                        headerSection.classList.remove("active"); 
+                    }
+                }
 
-            if (urls[i].tribo === 'suricatos') {
-                console.log('eh um suricato');
-            }
-            else {
-                console.log('nao eh um suricato');
-            }
+                var footers = document.getElementsByClassName("footer-section");
+                for(footer of footers) {
+                    footer.classList.remove("active");
+                }
 
-            setTimeout(function () {
-                i = (i + 1) % urls.length;
-                redirect_url();
-            }, 30 * 1000);
+                var footers = document.getElementsByClassName("footer-section fadeinRight");
+                for(footer of footers) {
+                    footer.classList.remove("fadeinRight");
+                    footer.classList.add("fadeoutRight");
+                }
+
+                var footerSection = document.getElementById("footer-"+urls[i].id);     
+                    console.log(footerSection);  
+                    footerSection.classList.add("fadeinRight");
+                    footerSection.classList.add("active");
+                if(urls[i].show) {
+                    var frameElement = document.getElementById("frame");
+                    frameElement.src = urls[i].url;
+                    frameElement.contentWindow.location.href = frameElement.src;
+
+                    setTimeout(function () {
+                        i = (i + 1) % urls.length;
+                        redirect_url();
+                    }, 30 * 1000);
+                } else {
+                    setTimeout(function () {
+                        i = (i + 1) % urls.length;
+                        redirect_url();
+                    }, 30 * 10);
+                }
+                
+            
         }
     </script>
 </head>
@@ -76,53 +187,150 @@
     .bg {
         width: 100%;
         height: 100%;
-        display: flex;
+        display: block;
+        grid-template-columns: auto auto auto auto auto auto;
+        grid-template-rows: 10% auto 6%;
     }
 
-    .content {
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(136deg, #FFA212 0%, #FF9801 40%, #F83D00 100%);
-        display: table;
-    }
-
-    .title-content {
-        display: inline-flex;
-        margin: 24px auto 24px 68px;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    .header-content {
+        font-family: 'bebas_neueregular', arial;
         font-size: 40px;
         font-weight: bold;
         color: white;
+        display: flex;
+        width: 100%;
+        height: 10%;
+        text-align: center;
+        vertical-align: middle;
 
     }
 
+    
+
     .blank-content {
-        width: 90%;
-        height: 80%;
-        margin: auto;
+        overflow: hidden;  
+        height: 82%;
+        width: 100%;
         display: flex;
         background-color: #ffffff;
     }
 
-    .center {
-        width: 85%;
-        height: 85%;
-        margin: auto;
-        display: flex;
 
+    .footer-content {    
+        display: flex;   
+        height: 8%;
+        width: 100%;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .header-section {
+        width: 50%;
+        display: flex;
+        background-color: #f8cfaf;
+    }
+
+    .footer-section {
+        width: 16.6667%;
+        display: flex;
+        background-color: #f8cfaf;
+    }
+
+    .fadeoutRight {
+        animation-name: fadeoutRight;
+        animation-duration: 0.5s;
+    }
+    .fadeinRight {
+        animation-name: fadeinRight;
+        animation-duration: 0.5s;
+    }
+
+    .fadeoutLeft {
+        animation-name: fadeoutLeft;
+        animation-duration: 0.5s;
+    }
+    .fadeinLeft {
+        animation-name: fadeinLeft;
+        animation-duration: 0.5s;
+    }
+
+    .inactive{
+     background-color: #f8cfaf;
+    }
+    .active{
+        background-color: #f16300;
+    }
+    @keyframes fadeoutRight {
+        0%   {background: linear-gradient(to right,  #f16300 0%,#f16300 50%,#f16300 100%);}
+        25%  {background: linear-gradient(to right,  #f8cfaf 0%,#f16300 50%,#f16300 100%);}
+        50%  {background: linear-gradient(to right,  #f8cfaf 0%,#f8cfaf 50%,#f16300 100%);}
+        100% {background: linear-gradient(to right,  #f8cfaf 0%,#f8cfaf 50%,#f8cfaf 100%);}
+    }
+    @keyframes fadeinRight {
+        0%   {background: linear-gradient(to right,  #f8cfaf 0%,#f8cfaf 50%,#f8cfaf 100%);}
+        25%  {background: linear-gradient(to right,  #f16300 0%,#f8cfaf 50%,#f8cfaf 100%);}
+        50%  {background: linear-gradient(to right,  #f16300 0%,#f16300 50%,#f8cfaf 100%);}
+        100% {background: linear-gradient(to right,  #f16300 0%,#f16300 50%,#f16300 100%);}
+    }
+
+    @keyframes fadeoutLeft {
+        0%   {background: linear-gradient(to left,  #f16300 0%,#f16300 50%,#f16300 100%);}
+        25%  {background: linear-gradient(to left,  #f8cfaf 0%,#f16300 50%,#f16300 100%);}
+        50%  {background: linear-gradient(to left,  #f8cfaf 0%,#f8cfaf 50%,#f16300 100%);}
+        100% {background: linear-gradient(to left,  #f8cfaf 0%,#f8cfaf 50%,#f8cfaf 100%);}
+    }
+    @keyframes fadeinLeft {
+        0%   {background: linear-gradient(to left,  #f8cfaf 0%,#f8cfaf 50%,#f8cfaf 100%);}
+        25%  {background: linear-gradient(to left,  #f16300 0%,#f8cfaf 50%,#f8cfaf 100%);}
+        50%  {background: linear-gradient(to left,  #f16300 0%,#f16300 50%,#f8cfaf 100%);}
+        100% {background: linear-gradient(to left,  #f16300 0%,#f16300 50%,#f16300 100%);}
+    }
+
+    .content-text {
+        margin: auto;
+        height: 1.3em;
     }
 </style>
 
 <body onload="redirect_url()">
 
     <div class="bg">
-        <div class="content">
-            <div class="title-content" id="titulo-frame">[Título]</div>
+            <div class="header-content" id="header-frame">
+                <div class="header-section" id="header-javalis">
+                    <div class="content-text">javalis</div>
+                </div>
+                <div class="header-section" id="header-suricatos">
+                        <div class="content-text">suricatos</div>
+                </div>
+            </div>
             <div class="blank-content">
-                <iframe id="frame" frameborder="0" style="height:100%;width:100%;top:0px;left:0px;right:0px;bottom:0px"
+                <iframe id="frame" frameborder="0"  scrolling="no" style="height:100%;width:100%;top:0px;left:0px;right:0px;bottom:0px;"
                     height="100%" width="100%"></iframe>
             </div>
-        </div>
+            <div class="footer-content" id="footer-frame">
+                <div class="footer-section" id="footer-ritos">
+                        <div class="content-text">RITOS</div>
+                </div>
+                <div class="footer-section" id="footer-oneone">
+                        <div class="content-text">1-1</div>
+                </div>
+                <div class="footer-section" id="footer-okrs">
+                        <div class="content-text">OKR'S</div>
+                </div>
+                <div class="footer-section" id="footer-burndown">
+                        <div class="content-text">BURNDOWN</div>
+                </div>
+                <div class="footer-section" id="footer-eventos">
+                        <div class="content-text">EVENTOS</div>
+                </div>
+                <div class="footer-section" id="footer-aniversarios">
+                        <div class="content-text">ANIVERSÁRIOS</div>
+                </div>
+            </div>
     </div>
 </body>
 
