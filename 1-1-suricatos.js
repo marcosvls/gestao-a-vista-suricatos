@@ -35,15 +35,17 @@ function makeGraph(data) {
     const target = data[i + 1]["gs$cell"]["$t"].toLowerCase();
     const date = data[i + 2]["gs$cell"]["$t"].toLowerCase();
 
+    const dir = 'fotos-suricatos/'
+    
     let s = nodes.firstOrDefault(source);
     if (!s)
-      nodes.push({ id: source, date });
+      nodes.push({ id: source, date, image: dir + source + '.jpg' });
     else if (!s.date)
       s.date = date;
 
     let t = nodes.firstOrDefault(target);
     if (!t)
-      nodes.push({ id: target, date: null });
+      nodes.push({ id: target, date: null, image: dir + target + '.jpg' });
 
     edges.push({ source, target });
   }
@@ -63,7 +65,9 @@ function convertGraph(graph) {
     nodes.push({
       id: i,
       label: graph.nodes[i].id.replace('.', '\n'),
-      color: gSheetGetNodeColor(graph.nodes[i].date)
+      color: gSheetGetNodeColor(graph.nodes[i].date),
+      image: graph.nodes[i].image,
+      shape: 'circularImage'
     });
   }
 
@@ -85,15 +89,15 @@ function gSheetGetNodeColor(date) {
   var date1 = new Date(date);
   var date2 = new Date();
   var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-  var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-  
-  if (diffDays <= 14) 
-      return '#09AA51';
+  var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+  if (diffDays <= 14)
+    return '#09AA51';
   if (diffDays <= 21)
-      return '#93E247';
+    return '#93E247';
   if (diffDays <= 28)
-      return '#FFC239';
+    return '#FFC239';
   if (diffDays <= 35)
-      return '#EA7439';
+    return '#EA7439';
   return '#ED1E2E';
 }
