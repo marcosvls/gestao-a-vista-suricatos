@@ -36,18 +36,37 @@ function makeGraph(data) {
     const date = data[i + 2]["gs$cell"]["$t"].toLowerCase();
 
     const dir = '../fotos-suricatos/'
-    
+
     let s = nodes.firstOrDefault(source);
-    if (!s)
-      nodes.push({ id: source, date, image: dir + source + '.jpg' });
-    else if (!s.date)
+
+    if (!s) {
+      nodes.push({
+        id: source,
+        date,
+        image: dir + source + '.jpg'
+      });
+    }
+    else if (!s.date) {
       s.date = date;
+    }
+    else if (date) {
+      s.date = s.date > date ? date : s.date;
+    }
 
     let t = nodes.firstOrDefault(target);
-    if (!t)
-      nodes.push({ id: target, date: null, image: dir + target + '.jpg' });
+    if (!t) {
+      nodes.push({
+        id: target,
+        date: null,
+        image: dir + target + '.jpg'
+      });
+    }
 
-    edges.push({ source, target });
+    edges.push({
+      source,
+      target,
+      date
+    });
   }
 
   nodes = nodes.sort((a, b) => {
@@ -75,7 +94,13 @@ function convertGraph(graph) {
     const edge = graph.edges[i];
     const isource = graph.nodes.indexFirstOrDefault(edge.source);
     const itarget = graph.nodes.indexFirstOrDefault(edge.target);
-    edges.push({ from: isource, to: itarget });
+    edges.push({
+      from: isource,
+      to: itarget,
+      color: {
+        color: gSheetGetNodeColor(graph.edges[i].date)
+      }
+    });
   }
 
   return { nodes, edges };
@@ -100,4 +125,5 @@ function gSheetGetNodeColor(date) {
   if (diffDays <= 35)
     return '#EA7439';
   return '#ED1E2E';
+
 }

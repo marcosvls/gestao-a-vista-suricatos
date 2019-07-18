@@ -2,35 +2,34 @@
 
 <head>
     <title>1-1 Suricatos</title>
-
     <style>
-        body {
-            color: #d3d3d3;
-            font: 12pt arial;
-            background-color: #ffffff;
+        .iframe1 {
+            margin: 0;
+            position: absolute;
+            right: 50%;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            border: 0;
         }
 
-        #mynetwork {
-            width: 100%;
+        .iframe2 {
+            margin: 0;
+            position: absolute;
+            right: 0;
+            left: 50%;
+            width: 50%;
             height: 100%;
-            border: 1px solid #444444;
-            background-color: #dddddd;
+            border: 0;
         }
     </style>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css" />
-
 </head>
 
 <body>
+    <iframe id="gsheet" class="iframe1"
+        src="https://docs.google.com/spreadsheets/d/1zxefcYm124v63nStpbRb2h1Wskc2BjmXq_tguTo26xI/edit#gid=0"></iframe>
 
-    <div id="network"></div>
-
-    <script src="1-1-suricatos.js" type="text/javascript"></script>
-    <script id="gsheetscript"
-        src="https://spreadsheets.google.com/feeds/cells/1zxefcYm124v63nStpbRb2h1Wskc2BjmXq_tguTo26xI/1/public/values?alt=json-in-script&callback=gSheetDoData"></script>
-
+    <iframe id="vis" class="iframe2" src="1-1-suricatos-frame.html"></iframe>
 </body>
 
 </html>
