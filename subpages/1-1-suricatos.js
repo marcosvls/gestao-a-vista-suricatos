@@ -58,7 +58,7 @@ function makeGraph(data) {
       nodes.push({
         id: target,
         date: null,
-        image: dir + target + '.jpg'
+        image: dir + target + '.jpg?v=' + (new Date().toISOString())
       });
     }
 
