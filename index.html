@@ -20,63 +20,8 @@
     <meta http-equiv="Expires" content="0">
     <script>
         var urls = [
-        {
-                id: 'ritos',
-                titulo: 'Ritos Javalis',
-                tribo: 'javalis',
-                url: "subpages/ritos-javalis.html",
-                show: true
-            },
             {
-                id: 'ritos',
-                titulo: 'Ritos Javalis - Localiza',
-                tribo: 'javalis',
-                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=2126274174&single=true&chrome=false",
-                show: true
-            },
-            {
-                id: 'ritos',
-                titulo: 'Ritos Javalis - VLi',
-                tribo: 'javalis',
-                url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk9bPzyaZ-zuR1iazktzgY18D_2ZERRL9zI3ibxmHjGlT6cQ5_DkVoe2Ig-kyG-J8o3a9GLf_P9xB7/pubhtml?gid=1417231095&single=true&chrome=false",
-                show: true
-            },
-            {
-                id: 'oneone',
-                titulo: '1-1 Javalis',
-                tribo: 'javalis',
-                url: "",
-                show: false
-            },
-            {
-                id: 'okrs',
-                titulo: 'OKRs Javalis',
-                tribo: 'javalis',
-                url: "",
-                show: false
-            },
-            {
-                id: 'burndown',
-                titulo: 'Burndown Javalis',
-                tribo: 'javalis',
-                url: "",
-                show: false
-            },
-            {
-                id: 'eventos',
-                titulo: 'Eventos Javalis',
-                tribo: 'javalis',
-                url: "subpages/eventos-javalis.html",
-                show: true
-            },
-            {
-                id: 'aniversarios',
-                titulo: 'Aniversários Javalis',
-                tribo: 'javalis',
-                url: "subpages/aniversarios-javalis.html",
-                show: true
-            },
-            {
+               
                 id: 'ritos',
                 titulo: 'Ritos Suricatos',
                 tribo: 'suricatos',
@@ -120,33 +65,15 @@
             }
         ];
         var i = 0;
-        var currentTribo = "";
+
         function redirect_url() {            
             // urlsShow = urls.filter(element => element.show);
             console.log(urls);
-                if (urls[i].tribo !== currentTribo) {
-                    currentTribo = urls[i].tribo;
-                    if (currentTribo === "javalis") {
-                        var headerSection = document.getElementById("header-suricatos");                        
-                        headerSection.classList.remove("fadeinRight");
-                        headerSection.classList.add("fadeoutLeft");
-                        headerSection.classList.remove("active");
-                        var headerSection = document.getElementById("header-javalis");                     
-                        headerSection.classList.remove("fadeoutRight");
-                        headerSection.classList.add("fadeinLeft");  
-                        headerSection.classList.add("active");    
-                    } else {
                         var headerSection = document.getElementById("header-suricatos");                       
                         headerSection.classList.remove("fadeoutLeft");
                         headerSection.classList.add("fadeinRight");
                         headerSection.classList.add("active");
-                        var headerSection = document.getElementById("header-javalis");                        
-                        headerSection.classList.remove("fadeinLeft");
-                        headerSection.classList.add("fadeoutRight");
-                        headerSection.classList.remove("active"); 
-                    }
-                }
-
+               
                 var footers = document.getElementsByClassName("footer-section");
                 for(footer of footers) {
                     footer.classList.remove("active");
@@ -229,7 +156,7 @@
     }
 
     .header-section {
-        width: 50%;
+        width: 100%;
         display: flex;
         background-color: #f8cfaf;
     }
@@ -300,9 +227,6 @@
 
     <div class="bg">
             <div class="header-content" id="header-frame">
-                <div class="header-section" id="header-javalis">
-                    <div class="content-text">javalis</div>
-                </div>
                 <div class="header-section" id="header-suricatos">
                         <div class="content-text">suricatos</div>
                 </div>

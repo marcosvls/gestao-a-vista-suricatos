@@ -1,3 +1,3 @@
-# gestao-a-vista-javalis
+# gestao-a-vista-suricatos
 
-gestão à vista javalis dti
+gestão à vista suricatos dti
